@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Blog = require('./models/blog');
+const User = require('./models/addUser');
 
 
 const app = express();
@@ -40,7 +41,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
      });
   });
 
-  app.get('/', (req, res)=> {
+  /*app.get('/', (req, res)=> {
     Blog.findById()
     .then((result)=> {
       res.send(result)
@@ -48,8 +49,23 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
     .catch((err) => {
       console.log(err);
     })
-  })
+  })*/
 
+  app.get('/add-User',(req, res) => {
+    const user = new User({
+      email: 'abc@example.com',
+      Fullname: 'Name',
+      Topic: 'Interested topic'
+    });
+
+   user.save()
+      .then((result) => {
+        res.send(result)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
 
 
