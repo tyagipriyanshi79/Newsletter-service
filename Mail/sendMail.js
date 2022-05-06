@@ -9,7 +9,7 @@ const sendMail = async ({ name, email }) => {
     name: name,
   });
 
-  var mainOptions = {
+  const mainOptions = {
     from: '"Your mail" abc@example.com',
     to: email,
     subject: "Related Topic",

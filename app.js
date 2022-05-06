@@ -13,7 +13,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
   .then((result) => app.listen(3001))
   .catch((err) => console.log(err));
 
-
+//database for content
 
   app.post('/add-blog',(req, res) => {
     const blog = new Blog({
@@ -51,7 +51,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
       console.log(err);
     })
   })*/
-
+// database for user
   app.post('/add-User',(req, res) => {
     const user = new User({
       email: 'abc@example.com',
@@ -68,10 +68,19 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
       });
   });
 
-  schedule.scheduleJob('0 */12 * * *', () =>{
+  // schedule mail before 15 min from sending
+  schedule.schedule('0 */15 * * * *', () => {
+    transporter.sendMail(mailOptions, function (err, info) {
+        if(err) 
+          console.log(err);
+        else
+          console.log(info);
+         });
+    });
 
-  })
+  const PORT = 3001;
 
+app.listen(PORT, () => console.log(`App is running on ${PORT}...`));
 
 module.exports = app;
 
