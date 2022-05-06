@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Blog = require('./models/blog');
-const User = require('./models/addUser');
-
+const Blog = require('./models/Blogmodel');
+const User = require('./models/Usermodel');
+const schedule = require('node-schedule');
 
 const app = express();
 
@@ -67,6 +67,9 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
       });
   });
 
+  schedule.scheduleJob('0 */12 * * *', () =>{
+
+  })
 
 
 module.exports = app;
