@@ -15,7 +15,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
 
 
 
-  app.get('/add-blog',(req, res) => {
+  app.post('/add-blog',(req, res) => {
     const blog = new Blog({
       title: 'new blog',
       snippet: 'about the topic',
@@ -31,7 +31,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
       });
   });
 
-  app.get('/all-blogs', (req, res) => {
+  app.post('/all-blogs', (req, res) => {
      Blog.find()
      .then((result) => {
         res.send(result);
@@ -52,7 +52,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
     })
   })*/
 
-  app.get('/add-User',(req, res) => {
+  app.post('/add-User',(req, res) => {
     const user = new User({
       email: 'abc@example.com',
       Fullname: 'Name',
