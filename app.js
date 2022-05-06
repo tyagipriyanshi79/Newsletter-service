@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Blog = require('./models/Blogmodel');
 const User = require('./models/Usermodel');
 const schedule = require('node-schedule');
+require('./Mail/transporter')
 
 const app = express();
 
